@@ -92,6 +92,22 @@
                         Height="20"
                         Width="20" />
                     </Button>
+                    <Button
+                  x:Name="btnToggleCapture"                 
+                  HorizontalAlignment="Left"                  
+                  Style="{StaticResource MaterialDesignIconForegroundButton}"
+                  ToolTip="Toggle Capture"
+                  Cursor="Hand"
+                  Height="25"
+                  Width="25"                                    
+                  Command="{Binding ToggleCaptureCommand}"
+                   >
+
+                        <materialDesign:PackIcon
+                        Kind="Movie"
+                        Height="20"
+                        Width="20" />
+                    </Button>
                 </StackPanel>
                 <StackPanel x:Name="draggablePanel" 
                             Grid.Column="1"
@@ -101,7 +117,7 @@
                 </StackPanel>
                 <StackPanel Grid.Column="2" Grid.Row="0" 
                         Orientation="Horizontal" HorizontalAlignment="Right">
-                    
+
                     <Button
                   x:Name="btnMinimise"
                   HorizontalAlignment="Right"
@@ -168,15 +184,39 @@
                     Grid.RowSpan="2"
                     Content="{Binding DevicesView}"/>
 
-            <ContentControl
+            <Grid Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.RowSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <materialDesign:ColorPicker     
+                    Grid.Column="0"
+                Color="{Binding AverageColorHex, Mode =OneWay}"
+               />
+                <StackPanel Grid.Column="1" Orientation="Vertical">
+                    <Slider Minimum="0.0"
+                            Maximum="1.0"
+                            TickFrequency="0.01"
+                            Value="{Binding Saturation}"></Slider>
+                    <Slider Minimum="0.0"
+                            Maximum="1.0"
+                            TickFrequency="0.01"
+                            Value="{Binding Luminance}"></Slider>
+                </StackPanel>
+            </Grid>
+            
+         
+            <!--<ContentControl
                     Grid.Row="1"
                     Grid.Column="1"
                     Grid.RowSpan="3"
                    
                     VerticalContentAlignment="Stretch"
-                    Content="{Binding BaseDeviceControllerView}"/>
+                    Content="{Binding BaseDeviceControllerView}"/>-->
 
-           
+
             <materialDesign:PopupBox 
                 Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
                 Width="35"
